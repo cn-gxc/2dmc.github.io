@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>一个神奇的小论坛</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .容器{
+            最大宽度：800 px；
+            边距：自动20像素 ；
+            内边距：20像素；
+            背景颜色：#fff；
+            盒子阴影：0  0  10 px  rgba ( 0 , 0 , 0 , 0.1 ) ;
+        }
+
+        .form-group {
+            下边距：20 px；
+        }
+
+        标签{
+            显示：块；
+            字体粗细：粗体；
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #messages {
+            margin-top: 20px;
+        }
+
+        .message {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的世界游戏论坛</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="name">昵称：</label>
+            <input type="text" id="name" placeholder="请输入您的昵称（该名称会显示在您要发送的信息之前）">
+        </div>
+
+        <div class="form-group">
+            <label for="message">发送信息：</label>
+            <textarea id="message" placeholder="请输入您的留言"></textarea>
+        </div>
+
+        <button onclick="submitMessage()">发送</button>
+
+        <div id="messages"></div>
+    </div>
+
+    <script>
+        function submitMessage() {
+            var nameInput = document.getElementById("name");
+            var messageInput = document.getElementById("message");
+            var messagesDiv = document.getElementById("messages");
+
+            var name = nameInput.value;
+            var message = messageInput.value;
+
+            if (name && message) {
+                var messageElement = document.createElement("div");
+                messageElement.classList.add("message");
+                messageElement.innerHTML = "<strong>" + name + "：</strong>" + message;
+
+                messagesDiv.appendChild(messageElement);
+
+                nameInput.value = "";
+                messageInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
